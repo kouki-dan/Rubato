@@ -122,4 +122,5 @@ ENV/
 # Rope project settings
 .ropeproject
 
-
+# For django
+db.sqlite3
