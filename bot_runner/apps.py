@@ -1,7 +1,6 @@
 from django.apps import AppConfig
 from . import bot_manager
 
-
 class BotRunnerConfig(AppConfig):
     name = 'bot_runner'
 
@@ -9,8 +8,10 @@ class BotRunnerConfig(AppConfig):
         import sys
         if not sys.argv[1] == 'runserver':
             return
+        import os
+        if not "RUN_MAIN" in os.environ:
+            return
         from bot.models import Bot
-        # load_all_bot()
         # Load all bot in database
         bots = Bot.objects.all()
         for bot in bots:

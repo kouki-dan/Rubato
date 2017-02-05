@@ -48,6 +48,7 @@ class SlackClient(object):
         self.login_data = login_data
         self.domain = self.login_data['team']['domain']
         self.username = self.login_data['self']['name']
+        self.id = self.login_data['self']['id']
         self.users = dict((u['id'], u) for u in login_data['users'])
         self.parse_channel_data(login_data['channels'])
         self.parse_channel_data(login_data['groups'])
@@ -63,6 +64,9 @@ class SlackClient(object):
                                            http_proxy_port=proxy_port, http_no_proxy=no_proxy)
 
         self.websocket.sock.setblocking(0)
+
+    def close(self):
+        self.websocket.close()
 
     def parse_channel_data(self, channel_data):
         self.channels.update({c['id']: c for c in channel_data})
