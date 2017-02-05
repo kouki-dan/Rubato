@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rubato</title>
+</head>
+<body>
+Hello, {{ user }}
+<ul>
+    {% for bot in bots %}
+        <li>{{ bot.name }}</li>
+    {% empty %}
+        <li>No bots found.</li>
+    {%  endfor %}
+</ul>
+
+</body>
+</html>
