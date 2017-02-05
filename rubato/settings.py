@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'django.contrib.sites',
 
+    'bot',
 # allauth
     'allauth',
     'allauth.account',
